@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Cart from './components/Cart';
 import Payment from './components/Payment';
+import BackToTop from './components/BackToTop';
 import './index.css';
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
             <StoreLocations />
             <CTA />
             <Footer />
+            <BackToTop />
           </div>
         </CartProvider>
       </OrderProvider>

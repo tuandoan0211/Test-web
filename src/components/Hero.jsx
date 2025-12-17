@@ -27,24 +27,51 @@ export default function Hero() {
             alt="Hero Banner"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 to-slate-900/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-slate-900/40"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,140,0,0.1),transparent_50%)]"></div>
           
           {/* Hero Content */}
           <div className="absolute inset-0 flex items-center justify-start p-4 sm:p-8 lg:p-12">
-            <div className="max-w-xl">
+            <div className="max-w-xl relative z-10">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <p className="text-orange-500 font-bold text-sm sm:text-base lg:text-lg mb-2">Vợt cầu lông chính hãng</p>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                  Nâng cấp game của bạn<br className="hidden sm:block" />
-                  <span className="sm:hidden"> </span>với vợt chuyên nghiệp
+                <motion.p 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="inline-block px-4 py-1.5 bg-orange-500/20 backdrop-blur-sm border border-orange-400/30 text-orange-300 font-bold text-xs sm:text-sm lg:text-base mb-3 rounded-full"
+                >
+                  🏸 Vợt cầu lông chính hãng
+                </motion.p>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight drop-shadow-2xl">
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="block"
+                  >
+                    Nâng cấp game của bạn
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="block bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent"
+                  >
+                    với vợt chuyên nghiệp
+                  </motion.span>
                 </h1>
-                <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-4 sm:mb-6">
-                  Giảm giá đến 50% cho sản phẩm chính hãng
-                </p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-sm sm:text-base lg:text-lg text-gray-100 mb-4 sm:mb-6 font-medium drop-shadow-lg"
+                >
+                  Giảm giá đến <span className="text-orange-400 font-bold">50%</span> cho sản phẩm chính hãng
+                </motion.p>
               </motion.div>
             </div>
           </div>
@@ -71,20 +98,26 @@ export default function Hero() {
                   transition={{ duration: 0.5 }}
                   className="group cursor-pointer"
                 >
-                  <div className="relative rounded-lg sm:rounded-xl overflow-hidden bg-gray-100 aspect-square mb-2 sm:mb-3 hover:shadow-lg transition-all duration-300">
+                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 aspect-square mb-2 sm:mb-3 hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-300">
                     <img
                       src={category.image}
                       alt={category.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     {category.badge && (
-                      <div className="absolute top-1 sm:top-2 right-1 sm:right-2 bg-orange-600 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs font-bold">
+                      <motion.div 
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.1 * index }}
+                        className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg z-10"
+                      >
                         {category.badge}
-                      </div>
+                      </motion.div>
                     )}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  <p className="text-xs sm:text-sm font-semibold text-center text-slate-800 group-hover:text-orange-600 transition-colors">
+                  <p className="text-xs sm:text-sm font-bold text-center text-slate-800 group-hover:text-orange-600 transition-colors duration-300">
                     {category.name}
                   </p>
                 </motion.div>
@@ -94,19 +127,36 @@ export default function Hero() {
 
           {/* Flash Sale Banner */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+            className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-9 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 overflow-hidden shadow-2xl"
           >
-            <div className="flex-1">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider mb-1 sm:mb-2">⚡ Flash Sale</p>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">Giảm giá lên đến 50%</h3>
-              <p className="text-orange-100 text-sm sm:text-base">Hôm nay chỉ - Kết thúc lúc 23:59</p>
+            <div 
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundSize: '60px 60px'
+              }}
+            ></div>
+            <div className="relative z-10 flex-1">
+              <motion.p 
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="inline-block text-xs sm:text-sm font-bold uppercase tracking-wider mb-2 sm:mb-3 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full"
+              >
+                ⚡ Flash Sale
+              </motion.p>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 drop-shadow-lg">Giảm giá lên đến <span className="text-yellow-300">50%</span></h3>
+              <p className="text-orange-50 text-sm sm:text-base font-medium">Hôm nay chỉ - Kết thúc lúc 23:59</p>
             </div>
-            <button className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 bg-white text-orange-600 font-bold rounded-lg hover:bg-gray-100 transition-all duration-300 whitespace-nowrap text-sm sm:text-base w-full sm:w-auto">
-              Xem ngay
-            </button>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative z-10 px-5 sm:px-7 lg:px-9 py-3 sm:py-4 bg-white text-orange-600 font-bold rounded-xl hover:bg-gray-50 transition-all duration-300 whitespace-nowrap text-sm sm:text-base w-full sm:w-auto shadow-xl hover:shadow-2xl"
+            >
+              Xem ngay →
+            </motion.button>
           </motion.div>
         </div>
       </section>
